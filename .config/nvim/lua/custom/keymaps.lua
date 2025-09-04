@@ -29,7 +29,7 @@ end
 -- NVIMTREE (File Explorer) Keybindings
 -- ============================================================================
 -- Toggle file explorer
-map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
+map('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' })
 map('n', '<leader>E', '<cmd>NvimTreeFocus<CR>', { desc = 'Focus file explorer' })
 
 -- ============================================================================
@@ -79,8 +79,8 @@ map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 -- Move lines up/down
 map('n', '<M-j>', '<cmd>m .+1<CR>==', { desc = 'Move line down' })
 map('n', '<M-k>', '<cmd>m .-2<CR>==', { desc = 'Move line up' })
-map('v', '<M-j>', '<cmd>m \'>+1<CR>gv=gv', { desc = 'Move selection down' })
-map('v', '<M-k>', '<cmd>m \'<-2<CR>gv=gv', { desc = 'Move selection up' })
+map('v', '<M-j>', "<cmd>m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+map('v', '<M-k>', "<cmd>m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 
 -- Comment toggling
 map('n', '<leader>/', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', { desc = 'Toggle comment' })
