@@ -1,0 +1,6 @@
+alias z="nvim ~/.zshrc"
+alias y="yarn"
+alias re="source ~/.zshrc"
+alias gg="lazygit"
+alias v="nvim"
+alias n="nvim"
