@@ -809,6 +809,23 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
+  -- {
+  --   'maxmx03/solarized.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     -- This plugin has better background detection
+  --     vim.cmd.colorscheme 'solarized'
+  --
+  --     -- Still add focus-gained sync for reliability
+  --     vim.api.nvim_create_autocmd('FocusGained', {
+  --       callback = function()
+  --         print('FocusGained triggered at ' .. os.date '%H:%M:%S')
+  --         vim.o.background = vim.o.background -- Re-detect
+  --         vim.cmd.colorscheme 'solarized'
+  --       end,
+  --     })
+  --   end,
+  -- },
 
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
@@ -823,10 +840,24 @@ require('lazy').setup({
       vim.g.solarized_visibility = 'normal' -- Special chars visibility
       vim.g.solarized_diffmode = 'normal' -- Diff mode
       vim.g.solarized_statusline = 'normal' -- Statusline style
-
       -- Load the colorscheme here.
       -- Available variants: solarized, solarized-high, solarized-flat, solarized-low
       vim.cmd.colorscheme 'solarized'
+
+      vim.api.nvim_create_autocmd('TermResponse', {
+        callback = function()
+          if vim.v.termresponse:match 'colorscheme_changed' then
+            if vim.o.background == 'dark' then
+              vim.o.background = 'light'
+            else
+              vim.o.background = 'dark'
+            end
+
+            print('Toggled to ' .. vim.o.background .. ' mode')
+            vim.cmd.colorscheme 'solarized'
+          end
+        end,
+      })
     end,
   },
 
@@ -909,7 +940,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
