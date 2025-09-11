@@ -30,7 +30,11 @@ end
 -- ============================================================================
 -- Toggle file explorer
 map('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' })
-map('n', '<leader>E', '<cmd>NvimTreeFocus<CR>', { desc = 'Focus file explorer' })
+
+-- ============================================================================
+-- Git Keybindings
+-- ============================================================================
+map('n', '<leader>gb', '<cmd>GitBlameToggle<CR>', { desc = 'Git Blame Toggle' })
 
 -- ============================================================================
 -- TELESCOPE Keybindings (Enhanced from LunarVim)

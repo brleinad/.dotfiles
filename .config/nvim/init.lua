@@ -809,23 +809,6 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-  -- {
-  --   'maxmx03/solarized.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     -- This plugin has better background detection
-  --     vim.cmd.colorscheme 'solarized'
-  --
-  --     -- Still add focus-gained sync for reliability
-  --     vim.api.nvim_create_autocmd('FocusGained', {
-  --       callback = function()
-  --         print('FocusGained triggered at ' .. os.date '%H:%M:%S')
-  --         vim.o.background = vim.o.background -- Re-detect
-  --         vim.cmd.colorscheme 'solarized'
-  --       end,
-  --     })
-  --   end,
-  -- },
 
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
