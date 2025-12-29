@@ -13,12 +13,11 @@ end)
 
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 
-config.keys = {
-	{
+config.keys = {{
 		key = "C",
 		mods = "CMD|SHIFT",
-		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
-	},
+		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),,
+  {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},},
 	{
 		key = "S",
 		mods = "CMD|SHIFT",
