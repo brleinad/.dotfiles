@@ -3,21 +3,27 @@ local config = wezterm.config_builder()
 
 wezterm.on("toggle-colorscheme", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
-	if not overrides.color_scheme then
-		overrides.color_scheme = "Builtin Solarized Light"
+	if overrides.color_scheme == "Builtin Solarized Light" then
+		overrides.color_scheme = "Solarized (dark) (terminal.sexy)"
 	else
-		overrides.color_scheme = nil
+		overrides.color_scheme = "Builtin Solarized Light"
 	end
 	window:set_config_overrides(overrides)
 end)
 
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 
-config.keys = {{
+config.keys = {
+	{
 		key = "C",
 		mods = "CMD|SHIFT",
-		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),,
-  {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},},
+		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendString("\x1b\r"),
+	},
 	{
 		key = "S",
 		mods = "CMD|SHIFT",
