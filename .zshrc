@@ -112,6 +112,8 @@ alias re="source ~/.zshrc"
 alias gg="lazygit"
 alias v="nvim"
 alias dev="git checkout dev && git pull"
+alias cc="CLAUDE_CONFIG_DIR=~/.claude-personal/ claude"
+alias ccee="CLAUDE_CONFIG_DIR=~/.claude-ee claude"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
