@@ -103,20 +103,23 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias ee="cd ~/easy-expense"
 alias g="git"
 alias y="yarn"
-alias yc="yarn repo:clean"
 alias z="nvim ~/.zshrc"
 alias re="source ~/.zshrc"
 alias gg="lazygit"
 alias v="nvim"
 alias dev="git checkout dev && git pull"
 alias cc="CLAUDE_CONFIG_DIR=~/.claude-personal/ claude"
-alias ccee="CLAUDE_CONFIG_DIR=~/.claude-ee claude"
+alias cck="CLAUDE_CONFIG_DIR=~/.claude-klassen/ claude"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
