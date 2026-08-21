@@ -106,6 +106,13 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Indent with 2 spaces instead of tabs, in every file
+--  See `:help 'expandtab'`, `:help 'shiftwidth'`, `:help 'tabstop'`
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -153,6 +160,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Keep 2-space indentation even for filetypes whose ftplugin sets its own
+-- (python wants 4, go/make want tabs, etc.)
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Force 2 spaces for indentation in every filetype',
+  group = vim.api.nvim_create_augroup('custom-indent-2-spaces', { clear = true }),
+  callback = function()
+    vim.bo.expandtab = true
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+    vim.bo.softtabstop = 2
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -181,7 +201,9 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  -- Disabled: it auto-detects tabstop/shiftwidth per file, which overrides the
+  -- 2-space setting above. Re-enable if you want per-file detection back.
+  -- 'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
