@@ -111,7 +111,9 @@ alias gg="lazygit"
 alias v="nvim"
 alias dev="git checkout dev && git pull"
 alias cc="CLAUDE_CONFIG_DIR=~/.claude-personal/ claude"
+alias ccc="CLAUDE_CONFIG_DIR=~/.claude-personal/ claude --continue"
 alias cck="CLAUDE_CONFIG_DIR=~/.claude-klassen/ claude"
+alias cckc="CLAUDE_CONFIG_DIR=~/.claude-klassen/ claude --continue"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -123,3 +125,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@17"
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+
