@@ -1,2 +1,4 @@
 .config/configstore
 .config/gcloud
+.config/aca
+.config/cagent
